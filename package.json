@@ -1,10 +1,13 @@
 {
   "name": "qa-assessment",
   "version": "1.0.0",
-  "description": "NS QA Assessmebt",
+  "description": "NS QA Assessment",
   "main": "index.js",
   "scripts": {
-    "test": "wdio run ./wdio.conf.js"
+    "test": "wdio run ./wdio.conf.js",
+    "test-selector": "wdio run ./wdio.conf.js --spec ./test/specs/selector.test.js",
+    "test-fix": "wdio run ./wdio.conf.js --spec ./test/specs/fix.test.js",
+    "test-card": "wdio run ./wdio.conf.js --spec ./test/specs/card.test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
     "@wdio/cli": "^9.19.2",
     "@wdio/local-runner": "^9.19.2",
     "@wdio/mocha-framework": "^9.19.2",
-    "@wdio/spec-reporter": "^9.19.2"
+    "@wdio/spec-reporter": "^9.19.2",
+    "chance": "^1.1.13"
   }
 }

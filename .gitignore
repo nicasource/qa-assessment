@@ -137,6 +137,3 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/.idea/modules.xml
-/.idea/qa-assessment.iml
-/.idea/vcs.xml
