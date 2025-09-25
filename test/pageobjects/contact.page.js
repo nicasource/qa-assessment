@@ -7,14 +7,14 @@ class ContactFormPage extends BasePage {
     }
 
     // TODO: Add the correct selectors to the getters below
-    get form() { return $("") }
-    get contactTopMenu() { return $("") }
-    get fullNameInput() { return $("") }
-    get emailInput() { return $("") }
-    get websiteInput() { return $("") }
-    get messageTextarea() { return $("") }
-    get serviceRequestedDropdown() { return $("") }
-    get submitContactForm() { return $("") }
+    get form() { return $('.sf-contact-form') }
+    get contactTopMenu() { return $('button=Contact Us') }
+    get fullNameInput() { return $('#first_name') }
+    get emailInput() { return $('#email') }
+    get websiteInput() { return $('#url') }
+    get messageTextarea() { return $('[id="00N3t00000Mnjbl"]') }
+    get serviceRequestedDropdown() { return $('[id="00NPg000005JFTV"]') }
+    get submitContactForm() { return $(".submit-button-container-component") }
 
     async open() {
         await browser.url("")
@@ -50,7 +50,8 @@ class ContactFormPage extends BasePage {
 
     // TODO: Implement this method to select a service from the dropdown
     async chooseService(serviceRequested) {
-       throw new Error('Not implemented')
+        const dropdown = await this.serviceRequestedDropdown
+        await dropdown.selectByVisibleText(serviceRequested)
     }
 
     async fillForm(model) {
