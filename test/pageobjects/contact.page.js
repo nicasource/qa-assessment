@@ -7,14 +7,14 @@ class ContactFormPage extends BasePage {
     }
 
     // TODO: Add the correct selectors to the getters below
-    get form() { return $("") }
-    get contactTopMenu() { return $("") }
-    get fullNameInput() { return $("") }
-    get emailInput() { return $("") }
-    get websiteInput() { return $("") }
-    get messageTextarea() { return $("") }
-    get serviceRequestedDropdown() { return $("") }
-    get submitContactForm() { return $("") }
+    get form() { return $("form") }
+    get contactTopMenu() { return $('//*[@id="main-menu"]/div[3]/button') }
+    get fullNameInput() { return $("#first_name") }
+    get emailInput() { return $("#email") }
+    get websiteInput() { return $("#url") }
+    get messageTextarea() { return $('//*[@id="00N3t00000Mnjbl"]') }
+    get serviceRequestedDropdown() { return $('//*[@id="00NPg000005JFTV"]') }
+    get submitContactForm() { return $('//*[@id="contact"]/div[2]/form/div[7]/button') }
 
     async open() {
         await browser.url("")
@@ -24,7 +24,7 @@ class ContactFormPage extends BasePage {
     async generateContactModel(seed) {
         const chance = new Chance(seed)
 
-        const serviceOptions = [
+      const serviceOptions = [
             "Project Management",
             "QA Testing",
             "Salesforce Administration",
@@ -33,12 +33,13 @@ class ContactFormPage extends BasePage {
             "UX/UI Design",
         ]
 
+
         return {
             fullName: chance.name(),
             email: chance.email(),
             website: chance.url(),
             message: chance.sentence({ words: 5 }),
-            serviceRequested: chance.pickone(serviceOptions),
+            serviceRequested: chance.pickone(serviceOptions)
         }
     }
 
@@ -50,7 +51,15 @@ class ContactFormPage extends BasePage {
 
     // TODO: Implement this method to select a service from the dropdown
     async chooseService(serviceRequested) {
-       throw new Error('Not implemented')
+
+        const opt = serviceRequested;
+
+        await this.serviceRequestedDropdown.selectByVisibleText(opt)
+
+
+        return opt
+
+        //throw new Error('Not implemented')
     }
 
     async fillForm(model) {
