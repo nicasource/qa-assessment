@@ -1,6 +1,6 @@
 import ContactFormPage from "../pageobjects/contact.page.js"
 //This test will focus on completing the test by adding the correct selector
-describe('Selector Contact Form', () => {
+describe.only('Selector Contact Form', () => {
     it('should navigate to contact us section', async () => {
         const contact = await ContactFormPage.generateContactModel()
 
