@@ -50,7 +50,8 @@ class ContactFormPage extends BasePage {
 
     // TODO: Implement this method to select a service from the dropdown
     async chooseService(serviceRequested) {
-       throw new Error('Not implemented')
+        const dropdown = await this.serviceRequestedDropdown
+        await dropdown.selectByVisibleText(serviceRequested)
     }
 
     async fillForm(model) {
